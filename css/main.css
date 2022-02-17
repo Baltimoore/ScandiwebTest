@@ -31,3 +31,13 @@
 .name { font-style: bold; }
 .price { font-style: italic; }
 .price::after { content: " $"; }
+
+/* inventāra pievienošanas formas izskats */
+#product_form .row { margin-bottom: 5px; }
+#product_form > .row > label { width: 100px; }
+#product_form > .row > input { width: 300px; }
+#product_form > .row:nth-child(4) > label { width: 150px; }
+#product_form > .row > select { width: 250px; }
+
+#itemProperties > div label { width: 125px; }
+#itemProperties > div input { width: 275px; }
