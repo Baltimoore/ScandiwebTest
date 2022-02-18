@@ -1,7 +1,7 @@
 <?php
 define("TITLE", "Product List");
-define("BUTTON_1", 'id="add-product-btn" onclick="">add');
-define("BUTTON_2", 'id="delete-product-btn" onclick="">mass delete');
+define("BUTTON_1", 'id="add-product-btn" onclick="">ADD');
+define("BUTTON_2", 'id="delete-product-btn" onclick="">MASS DELETE');
 
 ob_start();
 require(dirname(__DIR__, 1) . "/html/viewHeader.html");
