@@ -1,3 +1,4 @@
+/* augšējās daļas izskata mainīgie */
 #top {
     border-bottom: 3px solid black;
     margin: 30px 20px 0;
@@ -9,6 +10,7 @@
     text-transform: uppercase;
 }
 
+/* apakšējās daļas izskata mainīgie */
 #bottom {
     border-top: 1px solid black;
     padding-top: 10px;
