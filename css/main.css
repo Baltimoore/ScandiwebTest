@@ -16,14 +16,14 @@
 }
 
 .bodies {
-    margin: 10px 30px;
+    padding: 10px 0;
 }
 
 /* veikala satura kāršu izskats */
 .col.card {
     margin: 10px auto;
     padding: 20px;
-    width: 275px;
+    width: 250px;
     height: 200px;
 }
 .cardContents { margin-top: 15px; }

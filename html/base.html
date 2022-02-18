@@ -19,6 +19,20 @@
 <body>
     <div id="top" class="navbar justify-content-between">
         <div id="pageName" class="display-4">Product [list vai add]</div>
+        <div id="viewSwitch">
+            <div class="form-check">
+                <input id="showItems" name="viewSwitch" class="form-check-input" type="radio" onchange="displayer(this)">
+                <label for="showItems" class="form-check-label">
+                    Item view
+                </label>
+            </div>
+            <div class="form-check">
+                <input id="showAdder" name="viewSwitch" class="form-check-input" type="radio" onchange="displayer(this)">
+                <label for="showAdder" class="form-check-label">
+                    Form view
+                </label>
+            </div>
+        </div>
         <div id="buttonPair">
             <!--Reāli pogas ievietos attiecīgās lapas skripts, jo katrai pogai vajag savu unikālo id-->
             <button type="button" id="btn1" class="btn btn-outline-dark">[Add vai Save]</button>
@@ -32,7 +46,7 @@
 
     <!--Pagaidu div-i, līdz es saprotu, kā var lietotājam pasniegt papildinātu HTML,
         vai pirms es abus skatus vienk noformēju PHP-->
-    <!--div id="bodyItems" class="bodies container">
+    <div id="bodyItems" class="bodies container" style="display: none;">
         <div class="row row-cols-auto">
             <div class="col card border-dark">
                 <input class="form-check-input delete-checkbox" type="checkbox" value="" aria-label="Select for deletion">
@@ -74,9 +88,9 @@
                 </div>
             </div>
         </div>
-    </div-->
+    </div>
 
-    <div id="bodyAdder" class="bodies">
+    <div id="bodyAdder" class="bodies" style="display: none;">
         <div id="product_form" class="container">
             <div class="row">
                 <label for="sku" class="col-1">SKU</label>
@@ -137,5 +151,25 @@
         </div>
     </footer>
 </body>
+
+<script>
+    let items = document.querySelector('#bodyItems');
+    let adder = document.querySelector('#bodyAdder');
+    function displayer (e) {
+        console.log(e);
+        switch (e.id) {
+            case 'showAdder':
+                items.setAttribute("style", "display:none");
+                adder.setAttribute("style", "");
+                break;
+            case 'showItems':
+                adder.setAttribute("style", "display:none");
+                items.setAttribute("style", "");
+                break;
+            default:
+                break;
+        }
+    }
+</script>
 
 </html>
