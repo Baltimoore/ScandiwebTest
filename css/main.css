@@ -41,5 +41,6 @@
 #product_form > .row:nth-child(4) > label { width: 150px; }
 #product_form > .row > select { width: 250px; }
 
+#itemProperties > div { display: none }
 #itemProperties > div label { width: 125px; }
 #itemProperties > div input { width: 275px; }

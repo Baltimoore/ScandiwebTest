@@ -107,14 +107,16 @@
             <div class="row">
                 <label for="productType" class="col-2">Type Switcher</label>
                 <select id="productType" class="form-select" required>
-                    <option selected disabled>Type Switcher</option>
+                    <option value="0" selected disabled>Type Switcher</option>
                     <option value="1">DVD</option>
                     <option value="2">Book</option>
                     <option value="3">Furniture</option>
                 </select>
             </div>
 
-            <div id="itemProperties">
+            <script src="../js/typeInput.js"></script>
+
+            <div id="itemProperties" style="display: none;">
                 <div id="DVD" class="row">
                     <label for="size" class="col-1">Size (MB)</label>
                     <input id="size" class="col-2" type="text" required>
@@ -124,22 +126,21 @@
                     <input id="weight" class="col-2" type="text" required>
                 </div>
                 <div id="Furniture">
-                    <span class="row">
+                    <div class="row">
                         <label for="height" class="col-1">Height (CM)</label>
                         <input id="height" class="col-2" type="text" required>
-                    </span>
-                    <span class="row">
+                    </div>
+                    <div class="row">
                         <label for="width" class="col-1">Width (CM)</label>
                         <input id="width" class="col-2" type="text" required>
-                    </span>
-                    <span class="row">
+                    </div>
+                    <div class="row">
                         <label for="length" class="col-1">Length (CM)</label>
                         <input id="length" class="col-2" type="text" required>
-                    </span>
+                    </div>
                 </div>
+                <p id="helpInfo"></p>
             </div>
-
-            <p id="helpInfo"></p>
 
         </div>
     </div>
@@ -156,7 +157,6 @@
     let items = document.querySelector('#bodyItems');
     let adder = document.querySelector('#bodyAdder');
     function displayer (e) {
-        console.log(e);
         switch (e.id) {
             case 'showAdder':
                 items.setAttribute("style", "display:none");
