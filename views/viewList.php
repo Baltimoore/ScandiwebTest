@@ -1,6 +1,6 @@
 <?php
 define("TITLE", "Product List");
-define("BUTTON_1", 'id="add-product-btn" onclick="">ADD');
+define("BUTTON_1", 'id="add-product-btn" href="./add-product">ADD');
 define("BUTTON_2", 'id="delete-product-btn" onclick="">MASS DELETE');
 // Lai būtu iespējams ievietot mainīgos paraugā
 ob_start();

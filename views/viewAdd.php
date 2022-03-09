@@ -1,7 +1,7 @@
 <?php
 define("TITLE", "Product Add");
 define("BUTTON_1", 'id="save-product-btn" onclick="">Save');
-define("BUTTON_2", 'id="cancel-product-btn" onclick="">Cancel');
+define("BUTTON_2", 'id="cancel-product-btn" href="/">Cancel');
 // Lai būtu iespējams ievietot mainīgos paraugā
 ob_start();
 require(dirname(__DIR__, 1) . "/html/viewHeader.html");
