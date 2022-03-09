@@ -24,16 +24,16 @@ ob_end_flush();
     <div class="row">
         <label for="productType" class="col-2">Type Switcher</label>
         <select id="productType" class="form-select" required>
-            <option selected disabled>Type Switcher</option>
+            <option selected disabled>Choose a type</option>
             <option value="1">DVD</option>
             <option value="2">Book</option>
             <option value="3">Furniture</option>
         </select>
     </div>
 
-    <script src="../js/typeInput.js"></script>
+    <script type="text/javascript" src="../js/typeInput.js" defer></script>
 
-    <div id="itemProperties" display="none">
+    <div id="itemProperties">
         <div id="DVD" class="row">
             <label for="size" class="col-1">Size (MB)</label>
             <input id="size" class="col-2" type="text" required>
@@ -60,4 +60,4 @@ ob_end_flush();
     </div>
 
 </div>
-<?= require(dirname(__DIR__) . "/html/viewFooter.html"); ?>
+<?= require(dirname(__DIR__, 1) . "/html/viewFooter.html"); ?>
