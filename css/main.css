@@ -4,9 +4,10 @@
     margin: 30px 20px 0;
     padding: 0 10px 5px;
 }
-#top > #buttonPair > button {
+#top a.btn {
     width: 150px;
     height: 40px;
+    padding: 8px 0;
 }
 
 /* apakšējās daļas izskata mainīgie */
