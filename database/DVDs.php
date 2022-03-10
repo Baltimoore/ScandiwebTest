@@ -1,7 +1,7 @@
 <?php
-// Apraksta info par mēbelēm
+// Apraksta info par diskiem
 
-class Furniture extends Items
+class DVDs extends Items
 {
     private $value;
     private const VALUE_TYPE = 'Size';
