@@ -16,4 +16,3 @@ switch ($request) {
         require __DIR__ . '/views/404.php';
         break;
 }
-?>
