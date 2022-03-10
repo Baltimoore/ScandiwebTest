@@ -1,7 +1,7 @@
 <?php
 // Apraksta info par diskiem
 
-class DVDs extends Items
+class DVD extends Items
 {
     private $value;
     private const VALUE_TYPE = 'Size';

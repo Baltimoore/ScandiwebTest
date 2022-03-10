@@ -1,7 +1,7 @@
 <?php
 // Apraksta info par grāmatām
 
-class Books extends Items
+class BCK extends Items
 {
     private $value;
     private const VALUE_TYPE = 'Weight';

@@ -1,7 +1,7 @@
 <?php
 // Apraksta info par mēbelēm
 
-class Furniture extends Items
+class FRN extends Items
 {
     private $height;
     private $width;
@@ -17,7 +17,7 @@ class Furniture extends Items
         $this->length = $arr('fLength');
     }
 
-    function getValue ()
+    function getValue()
     {
         return ($this->height . $this->width . $this->length);
     }
