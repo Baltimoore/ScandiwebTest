@@ -1,12 +1,23 @@
 <?php
 // Lielā inventāra klases aprakstītājs
-class item
+include './Books.php';
+include './DVDs.php';
+include './Furniture.php';
+
+abstract class Items
 {
     protected $sku;
     protected $name;
     protected $price;
-    protected $value;
     protected $type;
+
+    function __construct(array $arr)
+    {
+        $this->sku = $arr['SKU'];
+        $this->name = $arr['Name'];
+        $this->price = $arr['Price'];
+        $this->type = $arr['Type'];
+    }
 
     function setSKU($new)
     {
