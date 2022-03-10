@@ -4,7 +4,8 @@ define("BUTTON_1", 'id="add-product-btn" href="./add-product">ADD');
 define("BUTTON_2", 'id="delete-product-btn" onclick="">MASS DELETE');
 // Lai būtu iespējams ievietot mainīgos paraugā
 ob_start();
-require(dirname(__DIR__, 1) . "/html/viewHeader.html");
+require(dirname(__DIR__, 1) . "/html/pageHead.html");
+require(dirname(__DIR__, 1) . "/html/viewRibbon.html");
 ob_end_flush();
 ?>
 
