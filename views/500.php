@@ -1,8 +1,8 @@
 <?php
 // Lai būtu iespējams ievietot mainīgos iekš HTML templatiem
-define("ERROR_NUM", "404");
+define("ERROR_NUM", "500");
 define("TITLE", "Error " . ERROR_NUM);
-define("ERROR_TEXT", "dis page no be");
+define("ERROR_TEXT", "server has the ded");
 
 ob_start();
 require(dirname(__DIR__, 1) . "/html/pageHead.html");

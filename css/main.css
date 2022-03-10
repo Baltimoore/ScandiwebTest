@@ -10,11 +10,10 @@
     padding: 8px 0;
 }
 
-/* apakšējās daļas izskata mainīgie */
+/* kājenes izskata mainīgie */
 #bottom {
     border-top: 1px solid black;
     padding-top: 10px;
-    height:40px;
 }
 
 /* veikala satura kāršu izskats */
@@ -43,3 +42,5 @@
 #itemProperties > div input { width: 275px; }
 
 /* error lapu paskats */
+#errorPage { margin-top: 30vh; }
+#errorPage > .btn { margin-top: 2vh }
