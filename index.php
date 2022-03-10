@@ -1,5 +1,5 @@
 <?php
-require("db.config.php");
+require __DIR__ . '/database/config.php';
 
 // Nepieciešamā mājaslapas skata pārvirzītājs
 $request = $_SERVER['REQUEST_URI'];
