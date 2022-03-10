@@ -37,9 +37,9 @@ class Furniture extends Items
 
     function sqlSend()
     {
-        $sqlOrders = "INSERT INTO inventory (SKU, Name, Price, Value, Type, fHeight, fWidth, fLength) VALUES ";
+        $sqlOrders = "INSERT INTO inventory (SKU, Name, Price, Type, fHeight, fWidth, fLength) VALUES ";
         $sqlValues = parent::sqlSend();
-        $sqlValues .= $this->height . $this->width . $this->length . ');';
+        $sqlValues .= '"FRN",' . $this->height . ',' . $this->width . ',' . $this->length . ');';
 
         return ($sqlOrders . $sqlValues);
     }
