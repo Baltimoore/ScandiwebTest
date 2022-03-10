@@ -1,5 +1,5 @@
 <?php
-require("config.php");
+require("db.config.php");
 
 // Nepieciešamā mājaslapas skata pārvirzītājs
 $request = $_SERVER['REQUEST_URI'];
