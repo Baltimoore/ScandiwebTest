@@ -11,7 +11,8 @@ $connection = new mysqli($hostName, $username, $password, $database);
 
 // Savienojuma pārbaude
 if ($connection->connect_error) {
-    require __DIR__ . '/views/505.php';
+    http_response_code(500);
+    require __DIR__ . '/views/500.php';
 }
 
 // Inventāra klases
