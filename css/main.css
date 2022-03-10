@@ -11,7 +11,17 @@
 }
 
 /* kājenes izskata mainīgie */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+}
 #bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     border-top: 1px solid black;
     padding-top: 10px;
 }
