@@ -31,10 +31,6 @@ abstract class Items
     {
         $this->price = $new;
     }
-    function setValue($new)
-    {
-        $this->value = $new;
-    }
     function setType($new)
     {
         $this->type = $new;
@@ -51,10 +47,6 @@ abstract class Items
     function readPrice()
     {
         return $this->price;
-    }
-    function readValue()
-    {
-        return $this->value;
     }
     function readType()
     {
