@@ -9,7 +9,7 @@ require(dirname(__DIR__, 1) . "/html/viewRibbon.html");
 ob_end_flush();
 ?>
 
-<div id="body" class="container">
+<div id="content" class="container">
     <div class="row row-cols-auto"><?php 
     $itemCount = 1; //kkāds inventāra skaita lasīšanas skripts no datubāzes
     for ($i=0; $i < $itemCount; $i++) {
