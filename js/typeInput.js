@@ -9,5 +9,5 @@ function revealer() {
     });
     // Meklējam pēc atlasītās vērtības, kurš div ir lietotājam jāatklāj
     var divID = typeDropdown.value;
-    if (divID != NULL) { document.getElementById(divID).setAttribute("style", "display:inline"); }
+    if (divID) { document.getElementById(divID).setAttribute("style", "display:inline"); }
 };
