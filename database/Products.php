@@ -60,4 +60,14 @@ abstract class Items
     {
         return $this->type;
     }
+
+    function sqlSend()
+    {
+        $sqlContents = '(' . $this->sku . ',';
+        $sqlContents .= $this->name . ',';
+        $sqlContents .= $this->price . ',';
+        $sqlContents .= $this->value . ',';
+        $sqlContents .= $this->type . ',';
+        return $sqlContents;
+    }
 }

@@ -30,4 +30,13 @@ class Books extends Items
     {
         $this->value = $input;
     }
+
+    function sqlSend()
+    {
+        $sqlOrders = "INSERT INTO inventory (SKU, Name, Price, Value, Type, Weight) VALUES ";
+        $sqlValues = parent::sqlSend();
+        $sqlValues .= $this->value . ');';
+
+        return ($sqlOrders . $sqlValues);
+    }
 }

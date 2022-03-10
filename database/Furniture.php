@@ -3,19 +3,23 @@
 
 class Furniture extends Items
 {
-    private $value;
+    private $height;
+    private $width;
+    private $length;
     private const VALUE_TYPE = 'Dimensions';
     private const VALUE_MEASURE = 'cm';
 
     function __construct(array $arr)
     {
         parent::__construct($arr);
-        $this->value = $arr('fHeight') . 'x' . $arr('fWidth') . 'x' . $arr('fLength');
+        $this->height = $arr('fHeight');
+        $this->width = $arr('fWidth');
+        $this->length = $arr('fLength');
     }
 
     function getValue ()
     {
-        return $this->value;
+        return ($this->height . $this->width . $this->length);
     }
     function getValueType()
     {
@@ -29,5 +33,14 @@ class Furniture extends Items
     function setValue($input)
     {
         $this->value = $input;
+    }
+
+    function sqlSend()
+    {
+        $sqlOrders = "INSERT INTO inventory (SKU, Name, Price, Value, Type, fHeight, fWidth, fLength) VALUES ";
+        $sqlValues = parent::sqlSend();
+        $sqlValues .= $this->height . $this->width . $this->length . ');';
+
+        return ($sqlOrders . $sqlValues);
     }
 }

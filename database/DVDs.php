@@ -30,4 +30,13 @@ class Furniture extends Items
     {
         $this->value = $input;
     }
+
+    function sqlSend()
+    {
+        $sqlOrders = "INSERT INTO inventory (SKU, Name, Price, Value, Type, Size) VALUES ";
+        $sqlValues = parent::sqlSend();
+        $sqlValues .= $this->value . ');';
+
+        return ($sqlOrders . $sqlValues);
+    }
 }
