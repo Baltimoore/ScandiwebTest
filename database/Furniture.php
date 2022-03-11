@@ -9,33 +9,33 @@ class FRN extends Items
     private const VALUE_TYPE = 'Dimensions';
     private const VALUE_MEASURE = 'cm';
 
-    function __construct(array $arr)
+    public function __construct(array $arr)
     {
         parent::__construct($arr);
-        $this->height = $arr('fHeight');
-        $this->width = $arr('fWidth');
-        $this->length = $arr('fLength');
+        $this->height = $arr['fHeight'];
+        $this->width = $arr['fWidth'];
+        $this->length = $arr['fLength'];
     }
 
-    function getValue()
+    public function getValue()
     {
-        return ($this->height . $this->width . $this->length);
+        return ($this->height . "x" . $this->width . "x" . $this->length);
     }
-    function getValueType()
+    public function getValueType()
     {
         return self::VALUE_TYPE;
     }
-    function getValueMeasure()
+    public function getValueMeasure()
     {
         return self::VALUE_MEASURE;
     }
 
-    function setValue($input)
+    public function setValue($input)
     {
         $this->value = $input;
     }
 
-    function sqlSend()
+    public function sqlSend()
     {
         $sqlOrders = "INSERT INTO inventory (SKU, Name, Price, Type, fHeight, fWidth, fLength) VALUES ";
         $sqlValues = parent::sqlSend();

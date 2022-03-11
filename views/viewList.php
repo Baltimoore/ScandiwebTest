@@ -15,20 +15,20 @@ ob_end_flush();
     $connectDB = new database();
     $inventory = $connectDB->getProductList();
 
-    for ($i=0; $i < sizeof($inventory); $i++) {
+    foreach($inventory as $item) {
         // Card, kuras info tiek aizpildīts ar klases pasniegtajiem datiem
         // Echo atdalīts tukšā rindā, lai kad lietotājs skatās mājaslapas kodu, nav briesmīgs noformējums
         echo '
         <div class="col card border-dark">
             <input class="form-check-input delete-checkbox" type="checkbox" value="" aria-label="Select for deletion">
             <div class="cardContents text-center">
-                <p class="sku text-muted">' . $inventory[$i]->readSKU() . '</p>
-                <p class="name">' . $inventory[$i]->readName() . '</p>
-                <p class="price">' . $inventory[$i]->readPrice() . '</p>
+                <p class="sku text-muted">' . $item->getSKU() . '</p>
+                <p class="name">' . $item->getName() . '</p>
+                <p class="price">' . $item->getPrice() . '</p>
                 <p class="attributes">
-                    <span class="attributeType">' . $inventory[$i]->readType() . ': </span>
-                    <span class="attributeValue">' . $inventory[$i]->readValue() . '</span>
-                    <span class="attributeMeasure">' . $inventory[$i]->getValueMeasure() . '</span>
+                    <span class="attributeType">' . $item->getValueType() . ': </span>
+                    <span class="attributeValue">' . $item->getValue() . '</span>
+                    <span class="attributeMeasure">' . $item->getValueMeasure() . '</span>
                 </p>
             </div>
         </div>';

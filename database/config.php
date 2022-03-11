@@ -1,6 +1,6 @@
 <?php
 // Datubāzes pārvaldības un datu apmaiņas nodrošināšanas fails
-include './Products.php';
+include 'database/Products.php';
 
 class database {
     // Datubāzes pieslēgšanās atribūti
@@ -9,7 +9,7 @@ class database {
     private const PASS = "***REDACTED***";
     private const DB_ID = "***REDACTED***";
     // Datubāzes savienojuma mainīgais
-    protected $connection;
+    private $connection;
 
     // Veidojam savienojumu ar datubāzi
     function __construct()
@@ -28,8 +28,8 @@ class database {
     {
         $arr = array();
 
-        // Pārbaudām, vai eksistē savienojums ar datubāzi
-        if (!$this->connection)
+        // Pārbaudām, vai eksistē savienojums
+        if (!($this->connection))
         {
             http_response_code(500);
             return $arr;
@@ -43,10 +43,11 @@ class database {
         // Derētu pārveidot sql tabulu par PHP masīvu (array)
         foreach ($sqlReply as $row)
         {
-            $item = new $row["Type"]($row);
+            $itemType =  strval($row["Type"]);
+            $item = new $itemType($row);
             array_push($arr, $item);
         }
-
+        
         // Atgriežam aizpildīto & noformēto masīvu
         return $arr;
     }

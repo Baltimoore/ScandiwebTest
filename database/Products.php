@@ -1,8 +1,8 @@
 <?php
 // Lielā inventāra klases aprakstītājs
-include './Books.php';
-include './DVDs.php';
-include './Furniture.php';
+include 'database/Books.php';
+include 'database/DVDs.php';
+include 'database/Furniture.php';
 
 abstract class Items
 {
@@ -11,7 +11,7 @@ abstract class Items
     protected $price;
     protected $type;
 
-    function __construct(array $arr)
+    protected function __construct(array $arr)
     {
         $this->sku = $arr['SKU'];
         $this->name = $arr['Name'];
@@ -19,41 +19,41 @@ abstract class Items
         $this->type = $arr['Type'];
     }
 
-    function setSKU($new)
+    protected function setSKU($new)
     {
         $this->sku = $new;
     }
-    function setName($new)
+    protected function setName($new)
     {
         $this->name = $new;
     }
-    function setPrice($new)
+    protected function setPrice($new)
     {
         $this->price = $new;
     }
-    function setType($new)
+    protected function setType($new)
     {
         $this->type = $new;
     }
 
-    function readSKU()
+    public function getSKU()
     {
         return $this->sku;
     }
-    function readName()
+    public function getName()
     {
         return $this->name;
     }
-    function readPrice()
+    public function getPrice()
     {
         return $this->price;
     }
-    function readType()
+    public function getType()
     {
         return $this->type;
     }
 
-    function sqlSend()
+    protected function sqlSend()
     {
         $sqlContents = '("' . $this->sku . '",';
         $sqlContents .= '"' . $this->name . '",';

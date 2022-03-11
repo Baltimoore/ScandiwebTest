@@ -7,31 +7,31 @@ class BCK extends Items
     private const VALUE_TYPE = 'Weight';
     private const VALUE_MEASURE = 'kg';
 
-    function __construct(array $arr)
-    {
+    public function __construct(array $arr)
+    {;
         parent::__construct($arr);
-        $this->value = $arr('Weight');
+        $this->value = $arr['Weight'];
     }
 
-    function getValue()
+    public function getValue()
     {
         return $this->value;
     }
-    function getValueType()
+    public function getValueType()
     {
         return self::VALUE_TYPE;
     }
-    function getValueMeasure()
+    public function getValueMeasure()
     {
         return self::VALUE_MEASURE;
     }
 
-    function setValue($input)
+    public function setValue($input)
     {
         $this->value = $input;
     }
 
-    function sqlSend()
+    public function sqlSend()
     {
         $sqlOrders = "INSERT INTO inventory (SKU, Name, Price, Type, Weight) VALUES ";
         $sqlValues = parent::sqlSend();
