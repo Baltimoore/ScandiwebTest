@@ -58,7 +58,6 @@ abstract class Items
         $sqlContents = '("' . $this->sku . '",';
         $sqlContents .= '"' . $this->name . '",';
         $sqlContents .= $this->price . ',';
-        $sqlContents .= $this->value . ',';
         return $sqlContents;
     }
 }

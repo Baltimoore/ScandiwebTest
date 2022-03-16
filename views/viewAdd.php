@@ -1,65 +1,109 @@
 <?php
 define("TITLE", "Product Add");
-define("BUTTON_1", 'id="save-product-btn" onclick="">Save');
+define("BUTTON_1", 'id="save-product-btn" onclick="document.getElementById(\'product_form\').submit()">Save');
 define("BUTTON_2", 'id="cancel-product-btn" href="/">Cancel');
 // Lai būtu iespējams ievietot mainīgos paraugā
 ob_start();
 require(dirname(__DIR__, 1) . "/html/pageHead.html");
 require(dirname(__DIR__, 1) . "/html/viewRibbon.html");
 ob_end_flush();
+
+// Ievaddatu validācijai un nosūtīšanai uz serveri
+require(dirname(__DIR__, 1) . "/php/itemValidate.php");
 ?>
 
 <div id="content" class="container">
-    <div id="product_form">
+    <form id="product_form" action="/add-product" method="POST">
         <div class="row">
-            <label for="sku" class="col-1">SKU</label>
-            <input id="sku" class="col-2" type="text">
+            <label for="SKU" class="col-1">SKU</label>
+            <input id="SKU" name="SKU" class="col-2" type="text" value="<?= $newProduct['SKU'] ?? ""; ?>">
+            <? if (isset($errorMessages['SKU'])) {
+                echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['SKU'] . '</div>');
+            } ?>
         </div>
         <div class="row">
-            <label for="name" class="col-1">Name</label>
-            <input id="name" class="col-2" type="text">
+            <label for="Name" class="col-1">Name</label>
+            <input id="Name" name="Name" class="col-2" type="text" value="<?= $newProduct['Name'] ?? ""; ?>">
+            <? if (isset($errorMessages['Name'])) {
+                echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Name'] . '</div>');
+            } ?>
         </div>
         <div class="row">
-            <label for="price" class="col-1">Price ($)</label>
-            <input id="price" class="col-2" type="text">
+            <label for="Price" class="col-1">Price ($)</label>
+            <input id="Price" name="Price" class="col-2" type="text" value="<?= $newProduct['Price'] ?? ""; ?>">
+            <? if (isset($errorMessages['Price'])) {
+                echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Price'] . '</div>');
+            } ?>
         </div>
         <div class="row">
-            <label for="productType" class="col-2">Type Switcher</label>
-            <select id="productType" class="form-select" onchange="revealer()">
-                <option selected disabled>Choose a type</option>
-                <option value="DVD">DVD</option>
-                <option value="BCK">Book</option>
-                <option value="FRN">Furniture</option>
+            <label for="Type" class="col-2">Type Switcher</label>
+            <select id="Type" name="Type" class="form-select" onchange="revealer()">
+                <option value="DVD" <? if ((isset($newProduct['Type'])) && ($newProduct['Type'] == "DVD")) {
+                                        echo "selected";
+                                    } ?>>DVD</option>
+                <option value="BCK" <? if ((isset($newProduct['Type'])) && ($newProduct['Type'] == "BCK")) {
+                                        echo "selected";
+                                    } ?>>Book</option>
+                <option value="FRN" <? if ((isset($newProduct['Type'])) && ($newProduct['Type'] == "FRN")) {
+                                        echo "selected";
+                                    } ?>>Furniture</option>
             </select>
+            <? if (isset($errorMessages['Type'])) {
+                echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Type'] . '</div>');
+            } ?>
         </div>
 
         <div id="itemProperties">
-            <div id="DVD" class="row">
-                <label for="size" class="col-1">Size (MB)</label>
-                <input id="size" class="col-2" type="text">
+            <div id="DVD">
+                <div class="row">
+                    <label for="Size" class="col-1">Size (MB)</label>
+                    <input id="Size" name="Size" class="col-2" type="text" value="<?= $newProduct['Size'] ?? ""; ?>">
+                    <? if (isset($errorMessages['Size'])) {
+                        echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Size'] . '</div>');
+                    } ?>
+                </div>
+                <p class="helpInfo">Please provide the size of this disk in megabytes.<br>
+                    For conversion between data measurements, please visit <a href="https://www.unitconverters.net/data-storage-converter.html">this converter</a>.</p>
             </div>
-            <div id="BCK" class="row">
-                <label for="weight" class="col-1">Weight (KG)</label>
-                <input id="weight" class="col-2" type="text">
+            <div id="BCK">
+                <div class="row">
+                    <label for="Weight" class="col-1">Weight (KG)</label>
+                    <input id="Weight" name="Weight" class="col-2" type="text" value="<?= $newProduct['Weight'] ?? ""; ?>">
+                    <? if (isset($errorMessages['Weight'])) {
+                        echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Weight'] . '</div>');
+                    } ?>
+                </div>
+                <p class="helpInfo">Please provide the weight of this book in kilograms.<br>
+                    For conversion between weight measurements, please visit <a href="https://www.unitconverters.net/weight-and-mass-converter.html">this converter</a>.</p>
             </div>
             <div id="FRN">
                 <div class="row">
-                    <label for="height" class="col-1">Height (CM)</label>
-                    <input id="height" class="col-2" type="text">
+                    <label for="Height" class="col-1">Height (CM)</label>
+                    <input id="Height" name="Height" class="col-2" type="text" value="<?= $newProduct['fHeight'] ?? ""; ?>">
+                    <? if (isset($errorMessages['fHeight'])) {
+                        echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['fHeight'] . '</div>');
+                    } ?>
                 </div>
                 <div class="row">
-                    <label for="width" class="col-1">Width (CM)</label>
-                    <input id="width" class="col-2" type="text">
+                    <label for="Width" class="col-1">Width (CM)</label>
+                    <input id="Width" name="Width" class="col-2" type="text" value="<?= $newProduct['fWidth'] ?? ""; ?>">
+                    <? if (isset($errorMessages['fWidth'])) {
+                        echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['fWidth'] . '</div>');
+                    } ?>
                 </div>
                 <div class="row">
-                    <label for="length" class="col-1">Length (CM)</label>
-                    <input id="length" class="col-2" type="text">
+                    <label for="Length" class="col-1">Length (CM)</label>
+                    <input id="Length" name="Length" class="col-2" type="text" value="<?= $newProduct['fLength'] ?? ""; ?>">
+                    <? if (isset($errorMessages['fLength'])) {
+                        echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['fLength'] . '</div>');
+                    } ?>
                 </div>
+                <p class="helpInfo">Please provide the dimensions of this furniture in centimeters.<br>
+                    For conversion between length measurements, please visit <a href="https://www.unitconverters.net/length-converter.html">this converter</a>.</p>
             </div>
-            <p id="helpInfo"></p>
         </div>
-    </div>
-    <script type="text/javascript" src="../js/typeInput.js" defer></script>
+    </form>
+    <script type="text/javascript" src="../js/typeInput.js" onload="revealer()"></script>
 </div>
 
 <?= require(dirname(__DIR__, 1) . "/html/viewFooter.html"); ?>
