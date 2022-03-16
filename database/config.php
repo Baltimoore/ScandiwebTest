@@ -2,12 +2,13 @@
 // Datubāzes pārvaldības un datu apmaiņas nodrošināšanas fails
 include 'database/Products.php';
 
-class database {
+class database
+{
     // Datubāzes pieslēgšanās atribūti
-    private const HOST = "***REDACTED***";
-    private const USER = "***REDACTED***";
-    private const PASS = "***REDACTED***";
-    private const DB_ID = "***REDACTED***";
+    private const HOST = "***REMOVED***";
+    private const USER = "***REMOVED***";
+    private const PASS = "***REMOVED***";
+    private const DB_ID = "***REMOVED***";
     // Datubāzes savienojuma mainīgais
     private $connection;
 
@@ -18,38 +19,42 @@ class database {
     }
     function __destruct()
     {
-        if ($this->connection)
-        {
-            $this->connection -> close();
+        if ($this->connection) {
+            $this->connection->close();
         }
+    }
+
+    function sendCommands(string $sqlRequest, bool $requireReply)
+    {
+        // Pārbaudām, vai eksistē savienojums
+        if (!($this->connection)) {
+            http_response_code(500);
+            if ($requireReply) return NULL;
+            else return;
+        }
+
+        // Tā kā savienojums eksistē, savācam mums nepieciešamo informāciju
+        $sqlReply = $this->connection->query($sqlRequest);
+        if ($requireReply) return $sqlReply;
+        else return;
     }
 
     function getProductList()
     {
-        $arr = array();
+        $itemList = array();
 
-        // Pārbaudām, vai eksistē savienojums
-        if (!($this->connection))
-        {
-            http_response_code(500);
-            return $arr;
-        }
-
-        // Tā kā savienojums eksistē, savācam mums nepieciešamo informāciju
+        // Pieprasam no datubāzes mums nepieciešamo informāciju
         $sqlRequest = "SELECT * FROM inventory;";
-        $sqlQuery = mysqli_query($this->connection, $sqlRequest);
-        $sqlReply = mysqli_fetch_all($sqlQuery, MYSQLI_ASSOC);
+        $sqlReply = $this->sendCommands($sqlRequest, true);
 
         // Derētu pārveidot sql tabulu par PHP masīvu (array)
-        foreach ($sqlReply as $row)
-        {
+        foreach ($sqlReply as $row) {
             $itemType =  strval($row["Type"]);
             $item = new $itemType($row);
-            array_push($arr, $item);
+            array_push($itemList, $item);
         }
-        
-        // Atgriežam aizpildīto & noformēto masīvu
-        return $arr;
-    }
 
+        // Atgriežam aizpildīto & noformēto masīvu
+        return $itemList;
+    }
 }
