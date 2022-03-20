@@ -33,14 +33,21 @@ body {
     width: 250px;
     height: 200px;
 }
-.cardContents { margin-top: 15px; }
-.cardContents > p { line-height: 10px; }
-.name { font-style: bold; }
-.price { font-style: italic; }
+.col.card > input {
+    min-height: 20px;
+    min-width: 20px;
+    z-index:1;
+}
+.cardContents { margin-top: -20px; }
+.cardContents > .name { font-weight: bold; }
+.price {
+    font-style: italic;
+    margin-bottom: 0;
+}
 .price::after { content: " $"; }
 
 /* inventāra pievienošanas formas izskats */
-#product_form { padding:50px 5px 10px; }
+#product_form { padding: 50px 5px 10px; }
 #product_form .row { margin-bottom: 5px; }
 #product_form > .row > label { width: 100px; }
 #product_form > .row > input { width: 300px; }
