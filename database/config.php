@@ -38,23 +38,4 @@ class database
         if ($requireReply) return $sqlReply;
         else return;
     }
-
-    function getProductList()
-    {
-        $itemList = array();
-
-        // Pieprasam no datubāzes mums nepieciešamo informāciju
-        $sqlRequest = "SELECT * FROM inventory;";
-        $sqlReply = $this->sendCommands($sqlRequest, true);
-
-        // Derētu pārveidot sql tabulu par PHP masīvu (array)
-        foreach ($sqlReply as $row) {
-            $itemType =  strval($row["Type"]);
-            $item = new $itemType($row);
-            array_push($itemList, $item);
-        }
-
-        // Atgriežam aizpildīto & noformēto masīvu
-        return $itemList;
-    }
 }
