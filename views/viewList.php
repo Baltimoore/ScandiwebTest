@@ -1,7 +1,7 @@
 <?php
 define("TITLE", "Product List");
-define("BUTTON_1", 'id="add-product-btn" href="./add-product">ADD');
-define("BUTTON_2", 'id="delete-product-btn" name="deleter" onclick="document.getElementById(\'product_list\').submit()">MASS DELETE');
+define("BUTTON_1", 'onclick="location.href=\'http://scandistore.maskless.id.lv/add-product\'">ADD');
+define("BUTTON_2", 'onclick="document.getElementById(\'product_list\').submit()">MASS DELETE');
 // Lai būtu iespējams ievietot mainīgos paraugā
 ob_start();
 require(dirname(__DIR__, 1) . "/html/pageHead.html");

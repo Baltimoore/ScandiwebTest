@@ -1,4 +1,4 @@
-const typeDropdown = document.querySelector('#Type');
+const typeDropdown = document.querySelector('#productType');
 const inputDivs = Array.from(document.querySelector('#itemProperties').children);
 
 // Attēlojam attiecīgā inventāra tipa atribūtu ievadlaukus

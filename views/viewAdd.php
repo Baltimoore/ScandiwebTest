@@ -1,7 +1,7 @@
 <?php
 define("TITLE", "Product Add");
-define("BUTTON_1", 'id="save-product-btn" onclick="document.getElementById(\'product_form\').submit()">Save');
-define("BUTTON_2", 'id="cancel-product-btn" href="/">Cancel');
+define("BUTTON_1", 'onclick="document.getElementById(\'product_form\').submit()">Save');
+define("BUTTON_2", 'onclick="location.href=\'http://scandistore.maskless.id.lv/\'">Cancel');
 // Lai būtu iespējams ievietot mainīgos paraugā
 ob_start();
 require(dirname(__DIR__, 1) . "/html/pageHead.html");
@@ -16,28 +16,28 @@ require(dirname(__DIR__, 1) . "/php/itemValidate.php");
     <form id="product_form" action="/add-product" method="POST">
         <div class="row">
             <label for="SKU" class="col-1">SKU</label>
-            <input id="SKU" name="SKU" class="col-2" type="text" value="<?= $newProduct['SKU'] ?? ""; ?>">
+            <input id="sku" name="SKU" class="col-2" type="text" value="<?= $newProduct['SKU'] ?? ""; ?>">
             <? if (isset($errorMessages['SKU'])) {
                 echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['SKU'] . '</div>');
             } ?>
         </div>
         <div class="row">
             <label for="Name" class="col-1">Name</label>
-            <input id="Name" name="Name" class="col-2" type="text" value="<?= $newProduct['Name'] ?? ""; ?>">
+            <input id="name" name="Name" class="col-2" type="text" value="<?= $newProduct['Name'] ?? ""; ?>">
             <? if (isset($errorMessages['Name'])) {
                 echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Name'] . '</div>');
             } ?>
         </div>
         <div class="row">
             <label for="Price" class="col-1">Price ($)</label>
-            <input id="Price" name="Price" class="col-2" type="text" value="<?= $newProduct['Price'] ?? ""; ?>">
+            <input id="price" name="Price" class="col-2" type="text" value="<?= $newProduct['Price'] ?? ""; ?>">
             <? if (isset($errorMessages['Price'])) {
                 echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Price'] . '</div>');
             } ?>
         </div>
         <div class="row">
             <label for="Type" class="col-2">Type Switcher</label>
-            <select id="Type" name="Type" class="form-select" onchange="revealer()">
+            <select id="productType" name="Type" class="form-select" onchange="revealer()">
                 <option value="DVD" <? if ((isset($newProduct['Type'])) && ($newProduct['Type'] == "DVD")) {
                                         echo "selected";
                                     } ?>>DVD</option>
@@ -57,7 +57,7 @@ require(dirname(__DIR__, 1) . "/php/itemValidate.php");
             <div id="DVD">
                 <div class="row">
                     <label for="Size" class="col-1">Size (MB)</label>
-                    <input id="Size" name="Size" class="col-2" type="text" value="<?= $newProduct['Size'] ?? ""; ?>">
+                    <input id="size" name="Size" class="col-2" type="text" value="<?= $newProduct['Size'] ?? ""; ?>">
                     <? if (isset($errorMessages['Size'])) {
                         echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Size'] . '</div>');
                     } ?>
@@ -68,7 +68,7 @@ require(dirname(__DIR__, 1) . "/php/itemValidate.php");
             <div id="BCK">
                 <div class="row">
                     <label for="Weight" class="col-1">Weight (KG)</label>
-                    <input id="Weight" name="Weight" class="col-2" type="text" value="<?= $newProduct['Weight'] ?? ""; ?>">
+                    <input id="weight" name="Weight" class="col-2" type="text" value="<?= $newProduct['Weight'] ?? ""; ?>">
                     <? if (isset($errorMessages['Weight'])) {
                         echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['Weight'] . '</div>');
                     } ?>
@@ -79,21 +79,21 @@ require(dirname(__DIR__, 1) . "/php/itemValidate.php");
             <div id="FRN">
                 <div class="row">
                     <label for="Height" class="col-1">Height (CM)</label>
-                    <input id="Height" name="Height" class="col-2" type="text" value="<?= $newProduct['fHeight'] ?? ""; ?>">
+                    <input id="height" name="Height" class="col-2" type="text" value="<?= $newProduct['fHeight'] ?? ""; ?>">
                     <? if (isset($errorMessages['fHeight'])) {
                         echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['fHeight'] . '</div>');
                     } ?>
                 </div>
                 <div class="row">
                     <label for="Width" class="col-1">Width (CM)</label>
-                    <input id="Width" name="Width" class="col-2" type="text" value="<?= $newProduct['fWidth'] ?? ""; ?>">
+                    <input id="width" name="Width" class="col-2" type="text" value="<?= $newProduct['fWidth'] ?? ""; ?>">
                     <? if (isset($errorMessages['fWidth'])) {
                         echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['fWidth'] . '</div>');
                     } ?>
                 </div>
                 <div class="row">
                     <label for="Length" class="col-1">Length (CM)</label>
-                    <input id="Length" name="Length" class="col-2" type="text" value="<?= $newProduct['fLength'] ?? ""; ?>">
+                    <input id="length" name="Length" class="col-2" type="text" value="<?= $newProduct['fLength'] ?? ""; ?>">
                     <? if (isset($errorMessages['fLength'])) {
                         echo ('<div class="alert alert-danger ms-auto" role="alert">' . $errorMessages['fLength'] . '</div>');
                     } ?>
